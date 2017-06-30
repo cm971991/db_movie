@@ -1,4 +1,4 @@
-# hupu
+# DouBan_Movie
 
 > A Vue.js project
 
