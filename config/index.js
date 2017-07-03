@@ -19,8 +19,16 @@ module.exports = {
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
     cssSourceMap: false,
-    openUrlQuery: '/'
+    openUrlQuery: '/',
+    proxyTable: {
+      '/dbApi': {
+        target: 'https://api.douban.com/v2/movie/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/dbApi': ''
+        }
+      },
+    }
   }
 }

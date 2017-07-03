@@ -6,14 +6,14 @@ export default {
     {
       path: '/',
       component: function (resolve) {
-        require(['../pages/news.vue'], resolve)
+        require(['../pages/Hello.vue'], resolve)
       },
       meta: {title: '首页'}
     },
     {
-      path: '/news',
+      path: '/inTheaters',
       component: function (resolve) {
-        require(['../pages/news.vue'], resolve)
+        require(['../pages/inTheaters.vue'], resolve)
       },
       meta: {title: '首页'}
     }

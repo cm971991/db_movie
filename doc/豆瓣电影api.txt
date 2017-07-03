@@ -9,29 +9,14 @@ https://api.douban.com/v2/movie/subject/26354572?apikey=0b2bdeda43b5688921839c8e
 
 https://api.douban.com/v2/movie/subject/26354572/photos?apikey=0b2bdeda43b5688921839c8ecb20399b
 
-3.电影条目长评
+3.电影条目影评列表
 
 https://api.douban.com/v2/movie/subject/26354572/reviews?apikey=0b2bdeda43b5688921839c8ecb20399b
 
-4.电影条目剧照
-
-https://api.douban.com/v2/movie/subject/26354572/photos?apikey=0b2bdeda43b5688921839c8ecb20399b
-
-5.电影条目短评列表
+4.电影条目短评列表
 
 https://api.douban.com/v2/movie/subject/26354572/comments?apikey=0b2bdeda43b5688921839c8ecb20399b
 
-6.电影条目剧照
-
-https://api.douban.com/v2/movie/subject/26354572/photos?apikey=0b2bdeda43b5688921839c8ecb20399b
-
-7.电影条目剧照
-
-https://api.douban.com/v2/movie/subject/26354572/photos?apikey=0b2bdeda43b5688921839c8ecb20399b
-
-8.电影条目剧照
-
-https://api.douban.com/v2/movie/subject/26354572/photos?apikey=0b2bdeda43b5688921839c8ecb20399b
 
 
 二、影人条目
@@ -53,7 +38,8 @@ https://api.douban.com/v2/movie/celebrity/1303814/works?apikey=0b2bdeda43b568892
 
 1.电影搜索
 
-https://api.douban.com/v2/movie/subject/26354572/comments?apikey=0b2bdeda43b5688921839c8ecb20399b
+https://api.douban.com/v2/movie/search?q=张艺谋 
+https://api.douban.com/v2/movie/search?tag=喜剧
 
 
 四、榜单

@@ -10,10 +10,13 @@ import config from '../../config'
 import global from './modules/global'
 Vue.use(Vuex)
 
+import inTheaters from '../services/inTheatersService'
+
 export default new Vuex.Store({
   // 组合各模块
   modules: {
-    global
+    global,
+    inTheaters
   },
   // 状态持久化插件
   plugins: [creatPersistedstate({
