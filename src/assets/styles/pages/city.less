@@ -1,3 +1,33 @@
-.city-contain{
+.city-contain {
+  height: 100%;
+  .vux-header {
+    height: 47px;
+    background-color: #fff;
+    border-bottom: 1px solid #e2dfdf;
+    .vux-header-left {
+      .left-arrow:before {
+        border: 1px solid #04BE02;
+        border-width: 1px 0 0 1px;
+        height: 10px;
+        width: 10px;
+      }
+    }
 
+    .vux-header-title {
+      color: #000;
+      font-size: 15px;
+      font-weight: 400 !important;
+      letter-spacing: 1.2px;
+    }
+  }
+
+  .filter-row {
+    height: 88px;
+  }
+
+  .city-row {
+    height: calc(~"100% - 47px - 88px");
+    background-color: #F4F4F4;
+    overflow-y: auto;
+  }
 }

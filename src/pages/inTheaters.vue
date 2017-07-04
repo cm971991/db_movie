@@ -86,7 +86,9 @@
           this.inTheatersData = res
         })
       },
-      chooseCity () {}
+      chooseCity () {
+        this.$router.push({path: '/city'})
+      }
     }
   }
 </script>

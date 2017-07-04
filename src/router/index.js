@@ -16,6 +16,13 @@ export default {
         require(['../pages/inTheaters.vue'], resolve)
       },
       meta: {title: '首页'}
+    },
+    {
+      path: '/city',
+      component: function (resolve) {
+        require(['../pages/city.vue'], resolve)
+      },
+      meta: {title: '选择城市'}
     }
   ]
 }
