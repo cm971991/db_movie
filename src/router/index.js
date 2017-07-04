@@ -6,7 +6,7 @@ export default {
     {
       path: '/',
       component: function (resolve) {
-        require(['../pages/Hello.vue'], resolve)
+        require(['../pages/inTheaters.vue'], resolve)
       },
       meta: {title: '首页'}
     },

@@ -1,0 +1,115 @@
+.in-theaters-contain {
+  height: 100%;
+  background-color: #fff;
+
+  .filter-row {
+    height: 28px;
+    padding: 8px 10px;
+    .filter-city {
+      width: 54px;
+      float: left;
+      .current-city {
+        font-size: 14px;
+        color: #000;
+        &:after {
+          content: '';
+          font-family: 'iconfont', serif;
+          font-size: 14px;
+          padding-left: 2px;
+          color: #000000;
+        }
+      }
+    }
+    .filter-movie {
+      width: calc(~"100% - 54px");
+      float: left;
+      .weui-search-bar {
+        padding: 0 10px;
+        border-radius: 4px;
+        &:before {
+          border-top: none;
+        }
+        &:after {
+          border-bottom: none;
+        }
+        .weui-search-bar__label {
+          background-color: #EFEFF4;
+        }
+      }
+      .weui-search-bar_focusing {
+        padding: 10px;
+      }
+    }
+  }
+
+  .content-row {
+    height: calc(~"100% - 88px");
+    .vux-tab {
+      .vux-tab-item {
+        color: #888;
+        font-weight: 400;
+      }
+    }
+    .vux-slider {
+      height: 100%;
+      .vux-swiper {
+        height: 100% !important;
+        overflow-y: auto;
+        .content-item {
+          display: flex;
+          justify-content: space-around;
+          align-items: stretch;
+          padding: 15px 10px;
+          border-bottom: 1px solid #e5e5e5;
+          .content-item-img {
+            flex: 0 0 20%;
+            text-align: left;
+          }
+          .content-item-desc {
+            flex: 0 0 56%;
+            margin-left: 2%;
+            line-height: normal;
+            .title, .grade, .director, .casts, .collect-count {
+              color: #777;
+              font-size: 12px;
+              display: block;
+            }
+            .title {
+              color: #000;
+              font-size: 15px;
+            }
+            .grade {
+              display: initial;
+            }
+            .director {
+              margin-top: 2px;
+            }
+            .collect-count {
+              color: #000;
+              font-size: 14px;
+              font-weight: 400 !important;
+            }
+          }
+          .content-item-btn {
+            flex: 0 0 18%;
+            align-self: center;
+            margin-left: 2%;
+            text-align: right;
+            .buy-ticket {
+              color: #f93b77;
+              border: 1px solid #f93b77;
+              font-size: 12px;
+              font-weight: 500 !important;
+              padding: 0 14px;
+              line-height: 2;
+              border-radius: 2px;
+              &:after {
+                border-radius: 2px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

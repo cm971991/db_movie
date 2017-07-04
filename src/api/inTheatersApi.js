@@ -11,9 +11,9 @@ export default{
    * 正在热映
    * @returns {Promise}
    */
-  inTheaters () {
+  inTheaters (city) {
     return new Promise((resolve) => {
-      Vue.$api.xHttp.get(url.getUrl('in_theaters') + '&city=南京').then((res) => {
+      Vue.$api.xHttp.get(url.getUrl('in_theaters') + '&city=' + city).then((res) => {
         resolve(res)
       }).catch((ex) => {
         exception.ErrorMsgNotification(-1)

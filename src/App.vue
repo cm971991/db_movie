@@ -16,4 +16,8 @@
     @import "./assets/styles/global/constom";
     @import "./assets/styles/global/common";
     @import "./assets/styles/global/icon.css";
+
+    #app{
+        height:100%;
+    }
 </style>

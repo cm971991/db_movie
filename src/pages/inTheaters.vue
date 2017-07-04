@@ -1,13 +1,11 @@
 <template>
     <div class="in-theaters-contain">
         <div class="filter-row">
-            <div class="filter-city">
-                <label class="current-city">南京</label>
+            <div class="filter-city" v-on:click="chooseCity()">
+                <label class="current-city">{{currentCity}}</label>
             </div>
             <div class="filter-movie">
-                <search placeholder="电影 / 电视剧 / 影人"
-                        v-model="searchValue"
-                ></search>
+                <search placeholder="电影 / 电视剧 / 影人" v-model="searchValue"></search>
             </div>
         </div>
 
@@ -18,9 +16,39 @@
                           @click="tabData.currentValue = item" :key="index">{{item}}
                 </tab-item>
             </tab>
-            <swiper v-model="tabData.index" height="100px" :show-dots="false">
+            <swiper v-model="tabData.index" :show-dots="false">
                 <swiper-item v-for="(item, index) in tabData.list" :key="index">
-                    <div class="tab-swiper vux-center">{{item}} Container</div>
+                    <template v-for="model in inTheatersData">
+                        <div>
+                            <div class="content-item">
+                                <div class="content-item-img">
+                                    <x-img :src="model.images.small" :offset="10" container=".vux-swiper"></x-img>
+                                </div>
+                                <div class="content-item-desc">
+                                    <strong class="title">{{model.title}}</strong>
+                                    <rater v-model="model.rating.stars" slot="value" active-color="#FBAF26"
+                                           :font-size="14"
+                                           disabled></rater>
+                                    <span class="grade">{{model.rating.average}}</span>
+                                    <span class="director">导演 : {{model.directors[0].name}}</span>
+                                    <span class="casts">主演 :
+                                                        <template v-for="(cast,index) in model.casts">
+                                                            <span v-if="index<model.casts.length-1">
+                                                                 {{cast.name}} /
+                                                            </span>
+                                                            <span v-else>
+                                                                 {{cast.name}}
+                                                            </span>
+                                                        </template>
+                                    </span>
+                                    <span class="collect-count">{{model.collect_count}}人看过</span>
+                                </div>
+                                <div class="content-item-btn">
+                                    <x-button class="buy-ticket" mini plain type="primary">购票</x-button>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
                 </swiper-item>
             </swiper>
         </div>
@@ -28,14 +56,15 @@
 </template>
 
 <script>
-  import { Search, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem } from 'vux'
+  import { Search, XButton, XImg, Rater, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem } from 'vux'
 
   export default{
     components: {
-      Search, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem
+      Search, XButton, XImg, Rater, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem
     },
     data () {
       return {
+        currentCity: '南京',
         icon: '&#xe600;',
         searchValue: '',
         tabData: {
@@ -50,71 +79,18 @@
     mounted: function () {
       this.getinTheaters()
     },
-    ready: function () {},
     methods: {
       getinTheaters () {
-        this.$store.dispatch('inTheaters').then((res) => {
+        this.$store.dispatch('inTheaters', {city: this.currentCity}).then((res) => {
           console.log('res:', res)
           this.inTheatersData = res
         })
-      }
+      },
+      chooseCity () {}
     }
   }
 </script>
 
 <style lang="less" rel="stylesheet/less">
-    .in-theaters-contain {
-        background-color: #fff;
-
-        .filter-row {
-            height: 30px;
-            padding: 8px 10px;
-            .filter-city {
-                width: 54px;
-                float: left;
-                .current-city {
-                    font-size: 14px;
-                    color: #000;
-                    &:after {
-                        content: '';
-                        font-family: 'iconfont', serif;
-                        font-size: 14px;
-                        padding-left: 2px;
-                        color: #000000;
-                    }
-                }
-            }
-
-            .filter-movie {
-                width: calc(~"100% - 54px");
-                float: left;
-                .weui-search-bar {
-                    padding: 0 10px;
-                    border-radius: 4px;
-                    &:before {
-                        border-top: none;
-                    }
-                    &:after {
-                        border-bottom: none;
-                    }
-                    .weui-search-bar__label {
-                        background-color: #EFEFF4;
-                    }
-                }
-            }
-        }
-
-        .content-row {
-            height: calc(~"100% - 46px");
-            .vux-tab .vux-tab-item {
-                color: #888;
-                font-weight: 400;
-            }
-            .vux-swiper-item {
-                padding: 15px 10px;
-            }
-        }
-    }
-
-
+    @import '../assets/styles/pages/inTheaters';
 </style>

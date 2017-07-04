@@ -8,14 +8,20 @@ import exception from '../api/Exceptions'
 const actions = {
   /**
    * 正在热映
-   * @param commit
+   * @param city
    * @returns {Promise}
    */
-  inTheaters ({commit} = {}) {
+  inTheaters ({commit, state} = {}, body) {
     return new Promise((resolve) => {
-      api.inTheaters().then((res) => {
+      api.inTheaters(body.city).then((res) => {
         if (res) {
           if (res.subjects.length > 0) {
+            res.subjects.forEach((item, index) => {
+              if (item.rating) {
+                let temp = item.rating.stars / 10
+                item.rating.stars = (temp >= 0) ? temp : item.rating
+              }
+            })
             resolve(res.subjects)
           } else {
             exception.ErrorMsgNotification('0000', '很抱歉')
