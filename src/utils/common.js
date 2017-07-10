@@ -1,8 +1,8 @@
 ﻿let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 export default {
   getWidthHeight () {
-    let w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0],
-      x = w.innerWidth || e.clientWidth || g.clientWidth, y = w.innerHeight || e.clientHeight || g.clientHeight
+    let w                                                     = window, d = document, e                           = d.documentElement, g = d.getElementsByTagName('body')[0],
+        x = w.innerWidth || e.clientWidth || g.clientWidth, y = w.innerHeight || e.clientHeight || g.clientHeight
     return {width: x, height: y}
   },
   hasScrollBar (id) {
@@ -42,8 +42,8 @@ export default {
       url = window.location.href
     }
     name = name.replace(/[\[\]]/g, '\\$&')
-    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-      results = regex.exec(url)
+    let regex   = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url)
     if (!results) return null
     if (!results[2]) return ''
     return decodeURIComponent(results[2].replace(/\+/g, ' '))
@@ -94,5 +94,126 @@ export default {
       return '传输异常，请稍后再试！'
     }
     return error.ErrorMessage
+  },
+  Map() {
+    /**
+     * 存放键的数组
+     * @type {Array}
+     */
+    this.keys = new Array()
+    /**
+     * 存放数据
+     * @type {Object}
+     */
+    this.data = new Object()
+    /**
+     * 放入一个键值对
+     * @param  {String} key
+     * @param  {Object} value
+     */
+    this.put = function (key, value) {
+      if (!this.data[key]) {
+        this.keys.push(key)
+        let tempArray = new Array()
+        tempArray.push(value)
+        this.data[key] = tempArray
+      } else {
+        let tempArray = new Array()
+        if (this.data[key] instanceof Array) {
+          this.data[key].forEach((val, index) => {
+            tempArray.push(val)
+          })
+        } else {
+          tempArray.push(this.data[key])
+        }
+        tempArray.push(value)
+        this.data[key] = tempArray
+      }
+    }
+    /**
+     * 获取某键对应的值
+     * @param  {String} key
+     * @return {Object} value
+     */
+    this.get = function (key) {
+      return this.data[key]
+    }
+    /**
+     * 删除一个键值对
+     * @param  {String} key
+     */
+    this.remove = function (key) {
+      this.keys.remove(key)
+      this.data[key] = null
+    }
+    /**
+     * 遍历Map，执行处理函数
+     * @param  {Function}
+     */
+    this.each = function (fn) {
+      if (typeof fn !== 'function') {
+        return
+      }
+      let len = this.keys.length
+      for (let i = 0; i < len; i++) {
+        let k = this.keys[i]
+        fn(k, this.data[k], i)
+      }
+    }
+    /**
+     * 返回键值对数组(类似Java的entrySet)
+     * @return {Object} 键值对对象{key,value}的数组
+     */
+    this.entrys = function () {
+      let len = this.keys.length
+      let entrys = new Array(len)
+      for (let i = 0; i < len; i++) {
+        let tmp = this.keys[i]
+        entrys[i] = {
+          key: tmp,
+          value: this.data[tmp]
+        }
+      }
+      return entrys
+    }
+    /**
+     * 判断Map是否为空
+     * @return {Boolean}
+     */
+    this.isEmpty = function () {
+      return this.keys.length === 0
+    }
+    /**
+     * 获取键值对数量
+     * @return {Number}
+     */
+    this.size = function () {
+      return this.keys.length
+    }
+    /**
+     * 重写toString
+     * @return {String}
+     */
+    this.toString = function () {
+      let s = '{'
+      for (let i = 0; i < this.keys.length; i++, s += ',') {
+        let k = this.keys[i]
+        s += k + '=' + this.data[k]
+      }
+      s += '}'
+      return s
+    }
   }
 }
+
+/**
+ * 为Array对象添加remove方法，删除制定值得元素
+ * @param  {String} 数组元素值
+ */
+Array.prototype.remove = function (s) {
+  for (let i = 0; i < this.length; i++) {
+    if (s === this[i])
+      this.splice(i, 1)
+  }
+}
+

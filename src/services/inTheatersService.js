@@ -8,7 +8,9 @@ import exception from '../api/Exceptions'
 const actions = {
   /**
    * 正在热映
-   * @param city
+   * @param commit
+   * @param state
+   * @param body
    * @returns {Promise}
    */
   inTheaters ({commit, state} = {}, body) {

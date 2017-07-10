@@ -2,3 +2,4 @@ build/*.js
 config/*.js
 src/utils/*.js
 src/polyfill/index.js
+assets/json/district.js

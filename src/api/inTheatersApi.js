@@ -9,6 +9,7 @@ import exception from './Exceptions'
 export default{
   /**
    * 正在热映
+   * @param city
    * @returns {Promise}
    */
   inTheaters (city) {

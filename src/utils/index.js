@@ -4,19 +4,22 @@
 import localStorage from './localStorage'
 import Common from './common'
 import Date from './date'
+import PinYin from './pinyin'
 
 export default function (Vue) {
   if (!Vue.$utils) {
     Vue.$utils = {
       localStorage,
       Common,
-      Date
+      Date,
+      PinYin
     }
   } else {
     Vue.$utils = {
       localStorage,
       Common,
-      Date
+      Date,
+      PinYin
     }
   }
   Vue.mixin({
@@ -24,7 +27,8 @@ export default function (Vue) {
       this.$utils = {
         localStorage,
         Common,
-        Date
+        Date,
+        PinYin
       }
     }
   })
