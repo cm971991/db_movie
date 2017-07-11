@@ -5,7 +5,7 @@ import axios from 'axios'
 let onlineApi = 'http://api.51pinzhi.cn/api/'
 // 测试接口地址
 // let testApi = 'http://10.10.141.79:8080/icompaign/' // icompaign/
-let testApi = 'http://10.10.133.211:8080/' // icompaign/
+// let testApi = 'http://10.10.133.211:8080/' // icompaign/
 function successParse (res, load) {
   if (load) {
     Vue.$vux.loading.hide()
@@ -52,9 +52,9 @@ function send (url, method, body, options, load, loadMsg) {
     case 'development':
       break
     default:
-      if (!url.startsWith('http')) {
-        url = testApi + url
-      }
+      // if (!url.startsWith('http')) {
+      //   url = testApi + url
+      // }
       break
   }
   const opts = {...options}

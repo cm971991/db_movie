@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/7/3.
+ * Created by hale on 2017/7/3.
  */
 
 export default {
@@ -7,6 +7,18 @@ export default {
     let url = 'dbApi/'
     let apiKey = '0b2bdeda43b5688921839c8ecb20399b'
     let actions = {
+      // 热门城市
+      'hotCity': () => {
+        return '../../static/hotCity.json'
+      },
+      // 全国省份
+      'province': () => {
+        return '../../static/province.json'
+      },
+      // 省份对应的城市
+      'city': () => {
+        return '../../static/city.json'
+      },
       // 正在热映
       'in_theaters': () => {
         return url + 'in_theaters?' + apiKey

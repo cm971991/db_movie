@@ -2,7 +2,7 @@
     <div class="in-theaters-contain">
         <div class="filter-row">
             <div class="filter-city" v-on:click="chooseCity()">
-                <label class="current-city">{{currentCity}}</label>
+                <label class="current-city">{{getCurrentCity}}</label>
             </div>
             <div class="filter-movie">
                 <search placeholder="电影 / 电视剧 / 影人" v-model="searchValue"></search>
@@ -64,7 +64,6 @@
     },
     data () {
       return {
-        currentCity: '南京',
         icon: '&#xe600;',
         searchValue: '',
         tabData: {
@@ -74,6 +73,11 @@
           index: 0
         },
         inTheatersData: []
+      }
+    },
+    computed: {
+      getCurrentCity () {
+        return this.$store.getters.city
       }
     },
     mounted: function () {

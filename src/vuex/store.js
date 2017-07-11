@@ -11,12 +11,14 @@ import global from './modules/global'
 Vue.use(Vuex)
 
 import inTheaters from '../services/inTheatersService'
+import city from '../services/cityService'
 
 export default new Vuex.Store({
   // 组合各模块
   modules: {
     global,
-    inTheaters
+    inTheaters,
+    city
   },
   // 状态持久化插件
   plugins: [creatPersistedstate({

@@ -22,21 +22,54 @@
   }
 
   .filter-row {
-    height: 88px;
+    height: 82px;
+    .vux-tab {
+      height: 38px;
+      .vux-tab-item {
+        line-height: 38px;
+      }
+    }
+    .vux-search-box {
+      .weui-search-bar {
+        background: #fff;
+        &:before {
+          border-top: none;
+        }
+        &:after {
+          border-bottom: none;
+        }
+        .weui-search-bar__form {
+          &:after {
+            border: none;
+          }
+          //.weui-search-bar__box {
+          //  padding-top: 1px;
+          //  .weui-icon-search {
+          //    left: 1px;
+          //    top: 1px;
+          //  }
+          //}
+          //.weui-search-bar__label {
+          //  text-align: left;
+          //}
+        }
+      }
+    }
   }
-  @city-row-height: calc(~"100% - 47px - 88px");
-  .city-row {
-    height: @city-row-height;
+
+  @province-row-height: calc(~"100% - 47px - 82px");
+  .province-row {
+    height: @province-row-height;
     background-color: #EFEFF4;
     overflow-y: auto;
 
     .hot-city {
-      height: 220px;
+      height: 224px;
       padding: 15px 10px;
       .title {
         font-size: 13px;
         font-weight: 400;
-        color: #666;
+        color: #999;
         margin-bottom: 6px;
         label {
           padding-left: 1px;
@@ -60,14 +93,70 @@
         .city-square {
           margin-right: calc((100% - 93%) / 2);
         }
-
       }
-
     }
 
     .sort-city {
       height: 100%;
+      .title {
+        font-size: 13px;
+        font-weight: 400;
+        color: #999;
+        margin: 6px 0 2px 0;
+        padding-left: 10px;
+        label {
+          padding-left: 1px;
+        }
+      }
+      .content {
+        background-color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        color: #666;
+        div {
+          padding: 7px 0 7px 10px;
+        }
+      }
+    }
+    .border {
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  .city-row {
+    height: calc(~"100% - 47px");
+    background-color: #EFEFF4;
+    overflow-y: auto;
+
+    .title {
+      font-size: 13px;
+      font-weight: 400;
+      color: #999;
+      margin: 6px 0 2px 0;
+      padding-left: 10px;
+      label {
+        padding-left: 1px;
+      }
+    }
+    .content {
+      background-color: #fff;
+      font-size: 14px;
+      font-weight: 400;
+      color: #666;
+      div {
+        padding: 7px 0 7px 10px;
+      }
     }
 
+    .border {
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  .show {
+    display: block;
+  }
+  .hide {
+    display: none;
   }
 }
