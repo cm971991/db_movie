@@ -14,6 +14,7 @@ const actions = {
    * @returns {Promise}
    */
   inTheaters ({commit, state} = {}, body) {
+    console.log('body.city:', body.city)
     return new Promise((resolve) => {
       api.inTheaters(body.city).then((res) => {
         if (res) {

@@ -23,6 +23,13 @@ export default {
         require(['../pages/city.vue'], resolve)
       },
       meta: {title: '选择城市'}
+    },
+    {
+      path: '/indexList',
+      component: function (resolve) {
+        require(['../pages/indexListDemo.vue'], resolve)
+      },
+      meta: {title: '索引列表'}
     }
   ]
 }

@@ -73,10 +73,17 @@ const actions = {
     return new Promise((resolve) => {
       api.city().then((res) => {
         if (res) {
-          res.city = res.city.find((n) => n.code === body.code)
+          let cityChild = []
+          if (body.code) {
+            cityChild = res.city.find((n) => n.code === body.code).child
+          } else {
+            res.city.forEach((item, index) => {
+              cityChild = cityChild.concat(item.child)
+            })
+          }
           let cityList = []
           let map = new Vue.$utils.Common.Map()
-          res.city.child.forEach((item, index) => {
+          cityChild.forEach((item, index) => {
             let letter = Vue.$utils.PinYin.makePy(item.text)
             map.put(letter[0], item)
           })
