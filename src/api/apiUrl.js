@@ -21,27 +21,27 @@ export default {
       },
       // 正在热映
       'in_theaters': () => {
-        return url + 'in_theaters?' + apiKey
+        return url + 'in_theaters?client=somemessage&udid=dddddddddddddddddddddd&apikey=' + apiKey
       },
       // 即将上映
       'coming_soon': () => {
-        return url + 'coming_soon?' + apiKey
+        return url + 'coming_soon?apikey=' + apiKey
       },
       // Top250
       'top250': () => {
-        return url + 'top250?' + apiKey
+        return url + 'top250?apikey=' + apiKey
       },
       // 口碑榜
       'weekly': () => {
-        return url + 'weekly?' + apiKey
+        return url + 'weekly?apikey=' + apiKey
       },
       // 北美票房榜
       'us_box': () => {
-        return url + 'us_box?' + apiKey
+        return url + 'us_box?apikey=' + apiKey
       },
       // 新片榜
       'new_movies': () => {
-        return url + 'new_movies?' + apiKey
+        return url + 'new_movies?apikey=' + apiKey
       }
     }
     return actions[action]()

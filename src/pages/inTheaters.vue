@@ -51,18 +51,49 @@
                                         <span class="collect-count">{{model.collect_count}}人看过</span>
                                     </div>
                                     <div class="content-item-btn">
-                                        <x-button class="buy-ticket" mini plain type="primary">购票</x-button>
+                                        <template v-if="model.presell">
+                                            <x-button class="presell" mini plain type="primary">预售</x-button>
+                                        </template>
+                                        <template v-else>
+                                            <x-button class="buy-ticket" mini plain type="primary">购票</x-button>
+                                        </template>
                                     </div>
                                 </div>
                             </div>
                         </template>
                     </template>
-                    <!-- endregion -->
-                    <template v-else>
-                        <h1>111</h1>
-                    </template>
+                    <!-- endregion 正在上映 -->
                     <!-- region 即将上映 -->
-                    <!-- endregion -->
+                    <template v-else>
+                        <template v-for="model in comingSoonData">
+                            <div>
+                                <div class="content-item">
+                                    <div class="content-item-img">
+                                        <x-img :src="model.images.small" :offset="10" container=".vux-swiper"></x-img>
+                                    </div>
+                                    <div class="content-item-desc">
+                                        <strong class="title">{{model.title}}</strong>
+                                        <span class="director">导演 : {{model.directors[0].name}}</span>
+                                        <span class="casts">主演 :
+                                                        <template v-for="(cast,index) in model.casts">
+                                                            <span v-if="index<model.casts.length-1">
+                                                                 {{cast.name}} /
+                                                            </span>
+                                                            <span v-else>
+                                                                 {{cast.name}}
+                                                            </span>
+                                                        </template>
+                                    </span>
+                                        <span class="collect-count">{{model.collect_count}}人想看</span>
+                                    </div>
+                                    <div class="content-item-btn">
+                                            <x-button class="wanna-see" mini plain type="primary">想看</x-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </template>
+                    <!-- endregion 即将上映 -->
                 </swiper-item>
             </swiper>
         </div>
@@ -86,7 +117,8 @@
           currentValue: '正在上映',
           index: 0
         },
-        inTheatersData: []
+        inTheatersData: [],
+        comingSoonData: []
       }
     },
     computed: {
@@ -104,14 +136,24 @@
        */
       tabItemSelect (index) {
         console.log('index', index)
+        index === 0 ? this.getInTheaters() : this.getComingSoonData()
       },
       /**
        * 获取正在热映数据
        */
       getInTheaters () {
         this.$store.dispatch('inTheaters', {city: this.$store.getters.city}).then((res) => {
-          console.log('res:', res)
+          console.log('inTheaters:', res)
           this.inTheatersData = res
+        })
+      },
+      /**
+       * 获取即将上映数据
+       */
+      getComingSoonData () {
+        this.$store.dispatch('comingSoon').then(res => {
+          console.log('comingSoon:', res)
+          this.comingSoonData = res
         })
       },
       /**

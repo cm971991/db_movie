@@ -100,7 +100,6 @@
     },
     mounted () {
       if (!this.currentHeight) {
-        debugger
         this.currentHeight = document.documentElement.clientHeight - document.querySelector('.indexList-content').getBoundingClientRect().top
       }
       this.init()

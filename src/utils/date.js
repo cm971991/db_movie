@@ -48,13 +48,11 @@ export default {
     ft = ft || 'yyyy-MM-dd hh:mm:ss'
     return getDate(date).format(ft)
   },
-  
   dateCompare(a, b) {
     var d1 = getDate(a)
     var d2 = getDate(b)
     return !( a != "" && b != "" && d1 >= d2)
   },
-  
   add(date, value, type, ft) {
     ft = ft || 'yyyy-MM-dd hh:mm:ss'
     date = getDate(date)
@@ -102,5 +100,18 @@ export default {
       date1.setDate(date1.getDate() + 1)
     }
     return dateArr
+  },
+  /**
+   *
+   * @param start 开始时间
+   * @param end 结束时间
+   * @returns {number} 日期之差
+   */
+  getDifferenceDay: function (start, end) {
+    var eArr = end.split("-"),
+        sArr = start.split("-"),
+        sRDate = new Date(sArr[0], sArr[1], sArr[2]),
+        eRDate = new Date(eArr[0], eArr[1], eArr[2]);
+    return (eRDate - sRDate) / (24 * 60 * 60 * 1000);
   }
 }
