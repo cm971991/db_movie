@@ -42,6 +42,10 @@ export default {
       // 新片榜
       'new_movies': () => {
         return url + 'new_movies?apikey=' + apiKey
+      },
+      // 电影条目信息
+      'movie_detail': () => {
+        return url + 'subject/'
       }
     }
     return actions[action]()

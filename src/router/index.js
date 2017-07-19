@@ -25,6 +25,13 @@ export default {
       meta: {title: '选择城市'}
     },
     {
+      path: '/detail',
+      component: function (resolve) {
+        require(['../pages/movieDetail.vue'], resolve)
+      },
+      meta: {title: '电影详情'}
+    },
+    {
       path: '/indexList',
       component: function (resolve) {
         require(['../pages/indexListDemo.vue'], resolve)

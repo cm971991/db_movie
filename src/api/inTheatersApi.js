@@ -6,7 +6,7 @@ import Vue from 'vue'
 import url from '../api/apiUrl'
 import exception from './Exceptions'
 
-export default{
+export default {
   /**
    * 正在热映
    * @param city
@@ -30,6 +30,20 @@ export default{
       Vue.$api.xHttp.get(url.getUrl('coming_soon')).then((res) => {
         resolve(res)
       }).catch((ex) => {
+        exception.ErrorMsgNotification(-1)
+      })
+    })
+  },
+  /**
+   * 正在上映 点击查看详情
+   * @param mid
+   * @returns {Promise}
+   */
+  movieDetail (mid) {
+    return new Promise(resolve => {
+      Vue.$api.xHttp.get(url.getUrl('movie_detail') + mid).then(res => {
+        resolve(res)
+      }).catch(ex => {
         exception.ErrorMsgNotification(-1)
       })
     })

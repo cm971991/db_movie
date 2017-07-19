@@ -21,7 +21,7 @@
                     <!-- region 正在上映 -->
                     <template v-if="index===0">
                         <template v-for="model in inTheatersData">
-                            <div>
+                            <div @click="movieDetail(model.id)">
                                 <div class="content-item">
                                     <div class="content-item-img">
                                         <x-img :src="model.images.small" :offset="10" container=".vux-swiper"></x-img>
@@ -87,7 +87,7 @@
                                         <span class="collect-count">{{model.collect_count}}人想看</span>
                                     </div>
                                     <div class="content-item-btn">
-                                            <x-button class="wanna-see" mini plain type="primary">想看</x-button>
+                                        <x-button class="wanna-see" mini plain type="primary">想看</x-button>
                                     </div>
                                 </div>
                             </div>
@@ -103,13 +103,12 @@
 <script>
   import { Search, XButton, XImg, Rater, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem } from 'vux'
 
-  export default{
+  export default {
     components: {
       Search, XButton, XImg, Rater, Tab, TabItem, Flexbox, FlexboxItem, Swiper, SwiperItem
     },
     data () {
       return {
-        icon: '&#xe600;',
         searchValue: '',
         tabData: {
           list: ['正在上映', '即将上映'],
@@ -161,6 +160,13 @@
        */
       selectCity () {
         this.$router.push({path: '/city'})
+      },
+      /**
+       * 正在上映 点击查看详情
+       * @param mid
+       */
+      movieDetail (mid) {
+        this.$router.push({path: '/detail', query: {mid: mid}})
       }
     }
   }

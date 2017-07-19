@@ -66,6 +66,22 @@ const actions = {
         }
       })
     })
+  },
+  /**
+   * 正在上映 点击查看详情
+   * @param commit
+   * @param body
+   */
+  movieDetail ({commit} = {}, body) {
+    return new Promise(resolve => {
+      api.movieDetail(body.mid).then(res => {
+        if (res) {
+          resolve(res)
+        } else {
+          exception.ErrorMsgNotification(res.code, res.msg)
+        }
+      })
+    })
   }
 }
 

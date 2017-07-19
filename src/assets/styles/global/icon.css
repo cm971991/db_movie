@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'iconfont';  /* project id 342542 */
-    src: url('//at.alicdn.com/t/font_hqpi3368lsb81tt9.eot');
-    src: url('//at.alicdn.com/t/font_hqpi3368lsb81tt9.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_hqpi3368lsb81tt9.woff') format('woff'),
-    url('//at.alicdn.com/t/font_hqpi3368lsb81tt9.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_hqpi3368lsb81tt9.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_4xzdwdokieijm7vi.eot');
+    src: url('//at.alicdn.com/t/font_4xzdwdokieijm7vi.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_4xzdwdokieijm7vi.woff') format('woff'),
+    url('//at.alicdn.com/t/font_4xzdwdokieijm7vi.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_4xzdwdokieijm7vi.svg#iconfont') format('svg');
 }
 
 .icon-arrow {
@@ -16,3 +16,14 @@
 .icon-arrow:before {
     content: attr(icon);
 }
+
+.icon-dianying {
+    font-family: 'iconfont', serif;
+    font-size: 20px;
+    color: #fff;
+}
+
+.icon-dianying:before {
+    content: attr(icon);
+}
+
