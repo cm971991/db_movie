@@ -39,12 +39,12 @@
                 <template v-if="cityData.provinceList.length > 0">
                     <template v-for="(item,index) in cityData.provinceList">
                         <div class="title">
-                            <label>{{item.letter}}</label>
+                            <label>{{ item.letter }}</label>
                         </div>
 
                         <div class="content">
                             <template v-for="(val,index) in item.data">
-                                <div :class="{'border':item.data.length > 1 }" @click="getCity(val.code)">{{val.text}}
+                                <div :class="{'border':item.data.length > 1 }" @click="getCity(val.code)">{{ val.text }}
                                 </div>
                             </template>
                         </div>
@@ -60,11 +60,11 @@
             <template v-if="cityData.cityList.length > 0">
                 <template v-for="item in cityData.cityList">
                     <div class="title">
-                        <label>{{item.letter}}</label>
+                        <label>{{ item.letter }}</label>
                     </div>
                     <div class="content">
                         <template v-for="(val,index) in item.data">
-                            <div :class="{'border':item.data.length > 1 }" @click="selectCity(val)">{{val.text}}
+                            <div :class="{'border':item.data.length > 1 }" @click="selectCity(val)">{{ val.text }}
                             </div>
                         </template>
                     </div>

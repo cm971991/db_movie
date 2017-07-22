@@ -2,7 +2,7 @@
     <div class="in-theaters-contain">
         <div class="filter-row">
             <div class="filter-city" v-on:click="selectCity()">
-                <label class="current-city">{{getCurrentCity}}</label>
+                <label class="current-city">{{ getCurrentCity }}</label>
             </div>
             <div class="filter-movie">
                 <search placeholder="电影 / 电视剧 / 影人" v-model="searchValue"></search>
@@ -21,15 +21,15 @@
                     <!-- region 正在上映 -->
                     <template v-if="index===0">
                         <template v-for="model in inTheatersData">
-                            <div @click="movieDetail(model.id)">
+                            <div @click="movieDetail(model)">
                                 <div class="content-item">
                                     <div class="content-item-img">
                                         <x-img :src="model.images.small" :offset="10" container=".vux-swiper"></x-img>
                                     </div>
                                     <div class="content-item-desc">
                                         <strong class="title">{{model.title}}</strong>
-                                        <template v-if="model.rating.stars>0">
-                                            <rater v-model="model.rating.stars" slot="value" active-color="#FBAF26"
+                                        <template v-if="model.rating.stars > 0">
+                                            <rater v-model="model.rating.stars" active-color="#FBAF26"
                                                    :font-size="14"
                                                    disabled></rater>
                                             <span class="grade">{{model.rating.average}}</span>
@@ -37,18 +37,18 @@
                                         <template v-else>
                                             <div class="no-stars">暂无评分</div>
                                         </template>
-                                        <span class="director">导演 : {{model.directors[0].name}}</span>
+                                        <span class="director">导演 : {{ model.directors[0].name }}</span>
                                         <span class="casts">主演 :
                                                         <template v-for="(cast,index) in model.casts">
-                                                            <span v-if="index<model.casts.length-1">
-                                                                 {{cast.name}} /
+                                                            <span v-if="index < model.casts.length - 1">
+                                                                 {{ cast.name }} /
                                                             </span>
                                                             <span v-else>
-                                                                 {{cast.name}}
+                                                                 {{ cast.name }}
                                                             </span>
                                                         </template>
                                     </span>
-                                        <span class="collect-count">{{model.collect_count}}人看过</span>
+                                        <span class="collect-count">{{ model.collect_count }}人看过</span>
                                     </div>
                                     <div class="content-item-btn">
                                         <template v-if="model.presell">
@@ -72,19 +72,19 @@
                                         <x-img :src="model.images.small" :offset="10" container=".vux-swiper"></x-img>
                                     </div>
                                     <div class="content-item-desc">
-                                        <strong class="title">{{model.title}}</strong>
-                                        <span class="director">导演 : {{model.directors[0].name}}</span>
+                                        <strong class="title">{{ model.title }}</strong>
+                                        <span class="director">导演 : {{ model.directors[0].name }}</span>
                                         <span class="casts">主演 :
                                                         <template v-for="(cast,index) in model.casts">
-                                                            <span v-if="index<model.casts.length-1">
-                                                                 {{cast.name}} /
+                                                            <span v-if="index < model.casts.length - 1">
+                                                                 {{ cast.name }} /
                                                             </span>
                                                             <span v-else>
-                                                                 {{cast.name}}
+                                                                 {{ cast.name }}
                                                             </span>
                                                         </template>
                                     </span>
-                                        <span class="collect-count">{{model.collect_count}}人想看</span>
+                                        <span class="collect-count">{{ model.collect_count }}人想看</span>
                                     </div>
                                     <div class="content-item-btn">
                                         <x-button class="wanna-see" mini plain type="primary">想看</x-button>
@@ -163,10 +163,10 @@
       },
       /**
        * 正在上映 点击查看详情
-       * @param mid
+       * @param model
        */
-      movieDetail (mid) {
-        this.$router.push({path: '/detail', query: {mid: mid}})
+      movieDetail (model) {
+        this.$router.push({path: '/detail', query: {mid: model.id}})
       }
     }
   }

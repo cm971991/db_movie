@@ -14,7 +14,7 @@ export default {
    */
   inTheaters (city) {
     return new Promise((resolve) => {
-      Vue.$api.xHttp.get(url.getUrl('in_theaters') + '&city=' + city).then((res) => {
+      Vue.$api.xHttp.get(Vue.$utils.Common.stringFormat(url.getUrl('in_theaters'), city)).then((res) => {
         resolve(res)
       }).catch((ex) => {
         exception.ErrorMsgNotification(-1)
@@ -41,7 +41,22 @@ export default {
    */
   movieDetail (mid) {
     return new Promise(resolve => {
-      Vue.$api.xHttp.get(url.getUrl('movie_detail') + mid).then(res => {
+      Vue.$api.xHttp.get(Vue.$utils.Common.stringFormat(url.getUrl('movie_detail'), mid)).then(res => {
+        resolve(res)
+      }).catch(ex => {
+        exception.ErrorMsgNotification(-1)
+      })
+    })
+  },
+  /**
+   * 电影搜索
+   * @param q 姓名
+   * @param tag 标签
+   * @returns {Promise}
+   */
+  search (q, tag) {
+    return new Promise(resolve => {
+      Vue.$api.xHttp.get(Vue.$utils.Common.stringFormat(url.getUrl('search'), {q: q, tag: tag})).then(res => {
         resolve(res)
       }).catch(ex => {
         exception.ErrorMsgNotification(-1)

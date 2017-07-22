@@ -1,7 +1,7 @@
 ﻿let chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 export default {
   getWidthHeight () {
-    let w                                                     = window, d = document, e                           = d.documentElement, g = d.getElementsByTagName('body')[0],
+    let w                                                     = window, d = document, e = d.documentElement, g    = d.getElementsByTagName('body')[0],
         x = w.innerWidth || e.clientWidth || g.clientWidth, y = w.innerHeight || e.clientHeight || g.clientHeight
     return {width: x, height: y}
   },
@@ -48,7 +48,7 @@ export default {
     if (!results[2]) return ''
     return decodeURIComponent(results[2].replace(/\+/g, ' '))
   },
-  setTitle(title){
+  setTitle (title) {
     setTimeout(function () {
       //利用iframe的onload事件刷新页面
       document.title = title
@@ -64,7 +64,7 @@ export default {
       document.body.appendChild(iframe)
     }, 0)
   },
-  generateMixed(n) {
+  generateMixed (n) {
     var res = ''
     for (var i = 0; i < n; i++) {
       var id = Math.ceil(Math.random() * 35)
@@ -72,7 +72,7 @@ export default {
     }
     return res
   },
-  numberToChinese(n) {
+  numberToChinese (n) {
     if (!/^(0|[1-9]\d*)(\.\d+)?$/.test(n)) {
       return ''
     }
@@ -85,7 +85,7 @@ export default {
     for (var i = 0; i < n.length; i++) str += '零壹贰叁肆伍陆柒捌玖'.charAt(n.charAt(i)) + unit.charAt(i);
     return str.replace(/零(仟|佰|拾|角)/g, '零').replace(/(零)+/g, '零').replace(/零(兆|万|亿|元)/g, '$1').replace(/(兆|亿)万/g, '$1').replace(/(京|兆)亿/g, '$1').replace(/(京)兆/g, '$1').replace(/(京|兆|亿|仟|佰|拾)(万?)(.)仟/g, '$1$2零$3仟').replace(/^元零?|零分/g, '').replace(/(元|角)$/g, '$1整')
   },
-  errorMsg(code) {
+  errorMsg (code) {
     if (!code) {
       return '传输异常，请稍后再试！'
     }
@@ -95,7 +95,7 @@ export default {
     }
     return error.ErrorMessage
   },
-  Map() {
+  Map () {
     /**
      * 存放键的数组
      * @type {Array}
@@ -203,6 +203,9 @@ export default {
       s += '}'
       return s
     }
+  },
+  stringFormat (str,args){
+    return str.format(args);
   }
 }
 
@@ -215,5 +218,28 @@ Array.prototype.remove = function (s) {
     if (s === this[i])
       this.splice(i, 1)
   }
+}
+
+String.prototype.format = function (args) {
+  let result = this
+  if (arguments.length > 0) {
+    if (arguments.length === 1 && typeof (args) === 'object') {
+      for (let key in args) {
+        if (args[key] !== undefined) {
+          let reg = new RegExp('({' + key + '})', 'g')
+          result = result.replace(reg, args[key])
+        }
+      }
+    }
+    else {
+      for (let i = 0; i < arguments.length; i++) {
+        if (arguments[i] !== undefined) {
+          let reg = new RegExp('({)' + i + '(})', 'g')
+          result = result.replace(reg, arguments[i])
+        }
+      }
+    }
+  }
+  return result
 }
 

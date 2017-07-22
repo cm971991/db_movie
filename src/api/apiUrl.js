@@ -6,6 +6,8 @@ export default {
   getUrl: (action) => {
     let url = 'dbApi/'
     let apiKey = '0b2bdeda43b5688921839c8ecb20399b'
+    let client = 'somemessage'
+    let udid = 'dddddddddddddddddddddd'
     let actions = {
       // 热门城市
       'hotCity': () => {
@@ -21,11 +23,11 @@ export default {
       },
       // 正在热映
       'in_theaters': () => {
-        return url + 'in_theaters?client=somemessage&udid=dddddddddddddddddddddd&apikey=' + apiKey
+        return url + 'in_theaters?city={0}&client=' + client + '&udid=' + udid + '&apikey=' + apiKey
       },
       // 即将上映
       'coming_soon': () => {
-        return url + 'coming_soon?apikey=' + apiKey
+        return url + 'coming_soon?client=' + client + '&udid=' + udid + '&apikey=' + apiKey
       },
       // Top250
       'top250': () => {
@@ -45,7 +47,11 @@ export default {
       },
       // 电影条目信息
       'movie_detail': () => {
-        return url + 'subject/'
+        return url + 'subject/{0}?client=' + client + '&udid=' + udid + '&apikey=' + apiKey
+      },
+      // 电影搜索
+      'search': () => {
+        return url + 'search?q={q}&tag={tag}&client=' + client + '&udid=' + udid + '&apikey=' + apiKey
       }
     }
     return actions[action]()

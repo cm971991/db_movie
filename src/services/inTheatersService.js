@@ -76,7 +76,35 @@ const actions = {
     return new Promise(resolve => {
       api.movieDetail(body.mid).then(res => {
         if (res) {
-          resolve(res)
+          if (res.rating) {
+            let temp = res.rating.stars / 10
+            res.rating.stars = (temp >= 0) ? temp : res.rating
+            resolve(res)
+          } else {
+            exception.ErrorMsgNotification('0000', '很抱歉')
+          }
+        } else {
+          exception.ErrorMsgNotification(res.code, res.msg)
+        }
+      })
+    })
+  },
+  /**
+   * 搜索
+   * @param commit
+   * @param body
+   */
+  search ({commit} = {}, body) {
+    return new Promise(resolve => {
+      api.search(body.q, body.tag).then(res => {
+        if (res) {
+          if (res.subjects.length > 0) {
+            let now = parseInt(Vue.$utils.Date.format(new Date(), 'yyyy'))
+            let subject = res.subjects.filter(n => n.collect_count >= 50000 && (now - parseInt(n.year) <= 7))
+            resolve(subject)
+          } else {
+            exception.ErrorMsgNotification('0000', '很抱歉')
+          }
         } else {
           exception.ErrorMsgNotification(res.code, res.msg)
         }
