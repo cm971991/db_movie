@@ -93,7 +93,7 @@
                 </div>
                 <!-- endregion 影人 -->
 
-                <!-- region 预告片（没有权限 无法显示） -->
+                <!-- region 预告片（接口 没有权限 无法显示） -->
                 <!--<div class="previews-item">-->
                 <!--<div class="title">预告片</div>-->
                 <!--<div class="preview">-->
@@ -250,6 +250,7 @@
        */
       getActorDetail (actorId) {
         console.log('actorId:', actorId)
+        this.$router.push({path: '/celebrity', query: {cid: actorId}})
       },
       /**
        * 电影详情中的智能推荐

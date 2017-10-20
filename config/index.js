@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/dbmovie/',
     productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
@@ -15,7 +15,7 @@ module.exports = {
   },
   dev: {
     env: require('./dev.env'),
-    port: 8028,
+    port: 8055,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',

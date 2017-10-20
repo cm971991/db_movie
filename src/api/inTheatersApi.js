@@ -14,6 +14,7 @@ export default {
    */
   inTheaters (city) {
     return new Promise((resolve) => {
+      console.log('url:', Vue.$utils.Common.stringFormat(url.getUrl('in_theaters'), city))
       Vue.$api.xHttp.get(Vue.$utils.Common.stringFormat(url.getUrl('in_theaters'), city)).then((res) => {
         resolve(res)
       }).catch((ex) => {
@@ -30,20 +31,6 @@ export default {
       Vue.$api.xHttp.get(url.getUrl('coming_soon')).then((res) => {
         resolve(res)
       }).catch((ex) => {
-        exception.ErrorMsgNotification(-1)
-      })
-    })
-  },
-  /**
-   * 正在上映 点击查看详情
-   * @param mid
-   * @returns {Promise}
-   */
-  movieDetail (mid) {
-    return new Promise(resolve => {
-      Vue.$api.xHttp.get(Vue.$utils.Common.stringFormat(url.getUrl('movie_detail'), mid)).then(res => {
-        resolve(res)
-      }).catch(ex => {
         exception.ErrorMsgNotification(-1)
       })
     })

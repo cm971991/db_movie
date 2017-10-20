@@ -25,11 +25,18 @@ export default {
       meta: {title: '选择城市'}
     },
     {
-      path: '/detail',
+      path: '/movie',
       component: function (resolve) {
         require(['../pages/movieDetail.vue'], resolve)
       },
       meta: {title: '电影详情'}
+    },
+    {
+      path: '/celebrity',
+      component: function (resolve) {
+        require(['../pages/celebrityDetail.vue'], resolve)
+      },
+      meta: {title: '影人详情'}
     },
     {
       path: '/indexList',

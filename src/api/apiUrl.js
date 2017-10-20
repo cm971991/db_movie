@@ -4,7 +4,8 @@
 
 export default {
   getUrl: (action) => {
-    let url = 'dbApi/'
+    // 线上环境使用真实api地址 开发环境使用axios进行跨域调用dbApi/
+    let url = process.env.NODE_ENV === 'production' ? 'http ://127.0.0.1:8081/' : 'dbApi/'
     let apiKey = '0b2bdeda43b5688921839c8ecb20399b'
     let client = 'somemessage'
     let udid = 'dddddddddddddddddddddd'
@@ -52,6 +53,10 @@ export default {
       // 电影搜索
       'search': () => {
         return url + 'search?q={q}&tag={tag}&client=' + client + '&udid=' + udid + '&apikey=' + apiKey
+      },
+      // 影人条目信息
+      'celebrity': () => {
+        return url + 'celebrity/{0}?client=' + client + '&udid=' + udid + '&apikey=' + apiKey
       }
     }
     return actions[action]()

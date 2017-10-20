@@ -166,7 +166,7 @@
        * @param model
        */
       movieDetail (model) {
-        this.$router.push({path: '/detail', query: {mid: model.id}})
+        this.$router.push({path: '/movie', query: {mid: model.id}})
       }
     }
   }

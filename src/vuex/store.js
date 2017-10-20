@@ -8,17 +8,20 @@ import localStorage from '../utils/localStorage'
 import creatPersistedstate from 'vuex-persistedstate'
 import config from '../../config'
 import global from './modules/global'
+
 Vue.use(Vuex)
 
 import inTheaters from '../services/inTheatersService'
 import city from '../services/cityService'
+import movieDetail from '../services/movieDetailService'
 
 export default new Vuex.Store({
   // 组合各模块
   modules: {
     global,
     inTheaters,
-    city
+    city,
+    movieDetail
   },
   // 状态持久化插件
   plugins: [creatPersistedstate({
